@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git</title>
+    <script type="text/javascript">
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();       
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+      setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+  </script>
+  <script>
+  function mostraDataSeparata() {
+  const oggi = new Date();
+  const opzioni = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const dataFormattata = oggi.toLocaleDateString('it-IT', opzioni);
+  document.getElementById("dataOggi").innerHTML = "📅 Oggi è " + dataFormattata;
+}
+
+</script>
+
+
+  <style>
+    @page { size: 21cm 29.7cm; margin: 2cm }
+    p { margin-bottom: 0.25cm; line-height: 115%; background: transparent }
+    pre { background: transparent }
+    pre.western { font-family: "Courier New", monospace; font-size: 10pt }
+    pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+    pre.ctl { font-family: "Courier New", monospace; font-size: 10pt }
+
+    a:visited {
+      color: blue;
+    }
+
+    ol {
+      counter-reset: item;
+    }
+    li {
+      display: block;
+    }
+    li:before {
+      content: counter(item) ". ";
+      counter-increment: item;
+      color: red;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body onload="startTime(); mostraDataSeparata()">
+    <div id="txt"></div>
+
+  <div id="dataOggi" style="font-size: 18px; margin-top: 20px;"></div>
+
+  <h1>Accessibilità</h1>
+  <button onclick="readPage()">🗣️ Leggi la pagina</button>
+  <button onclick="stopReading()">🛑 Interrompi</button>
+  <button onclick="toggleTheme()">🌙 Cambia tema</button>
+  <hr>
+
+  <script>
+    let utterance;
+
+    function readPage() {
+      const text = document.body.innerText;
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "it-IT";
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      speechSynthesis.speak(utterance);
+    }
+
+    function stopReading() {
+      speechSynthesis.cancel();
+    }
+  </script>
+   
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+}
+</script>
+
+<style>
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+</style>
+
+  <h1>info su Git</h1>
+  <h2>Git</h2>
+  <p>
+  Git è un <strong>sistema di controllo di versione distribuito</strong> creato da  <a target="_blank" rel="noopener noreferrer" href="https://it.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a>   nel 2005.
+  Permette di tracciare le modifiche al codice sorgente e di collaborare con altri sviluppatori.
+</p>
+
+<h2>Perché usare Git?</h2>
+<ul>
+  <li>✅ Tiene traccia di ogni modifica al progetto</li>
+  <li>✅ Permette di tornare a versioni precedenti</li>
+  <li>✅ Facilita il lavoro in team</li>
+  <li>✅ È veloce e sicuro</li>
+</ul>
+
+<h2>Comandi principali di Git</h2>
+<pre>
+git init        # Inizializza un nuovo repository
+git clone URL   # Clona un repository esistente
+git add .       # Aggiunge i file all'area di staging
+git commit -m "Messaggio"   # Salva le modifiche con un messaggio
+git status      # Mostra lo stato dei file
+git log         # Visualizza la cronologia dei commit
+git push        # Invia le modifiche al repository remoto
+git pull        # Scarica e integra le modifiche dal remoto 
+</pre>
+
+<h2>Flusso di lavoro tipico</h2>
+<ol>
+  <li>Creare o clonare un repository</li>
+  <li>Modificare i file</li>
+  <li>Aggiungere i file con <code>git add</code></li>
+  <li>Salvare le modifiche con <code>git commit</code></li>
+  <li>Condividere il lavoro con <code>git push</code></li>
+</ol>
+<hr>
+<h1>La Storia di Git</h1>
+<h2>Timeline di Git</h2>
+<ul>
+  <li><strong>2005</strong> – Linus Torvalds crea Git per gestire lo sviluppo del kernel Linux.</li>
+  <li><strong>2008</strong> – Nasce GitHub, che rende Git accessibile e collaborativo online.</li>
+  <li><strong>2010</strong> – Git diventa lo standard per la maggior parte dei progetti open source.</li>
+  <li><strong>2014</strong> – GitLab emerge come alternativa self‑hosted a GitHub.</li>
+  <li><strong>2020</strong> – Milioni di repository attivi su GitHub e GitLab, Git domina il versionamento.</li>
+  <li><strong>Oggi</strong> – Git è usato da aziende, università e sviluppatori di tutto il mondo.</li>
+</ul>
+<hr>
+<h1> Come installare Git?</h1>
+<p>Ora vediamo come installare git Sul vostro computer vediamo i tutorial:</p>
+<ul>
+  <li><strong>Windows</strong>-Scarica l’installer ufficiale da <a target="_blank" rel="noopener noreferrer" href="https://git-scm.com/download/win">git-scm.com</a></li>
+  <li><strong>Linux</strong>- Usa il gestore pacchetti della tua distribuzione (es. <code>sudo apt install git</code> su Ubuntu)</li>
+  <li><strong>MacOS</strong>-Puoi installare Git in diversi modi: <ul> <li>Con <code>xcode-select --install</code> (installa gli strumenti da riga di comando di Xcode)</li> <li>Con Homebrew: <code>brew install git</code></li> <li>Scaricando il pacchetto da <a target="_blank" rel="noopener noreferrer" href="https://git-scm.com/download/mac">git-scm.com</a> </li> </ul> </li> 
+</ul>
+<img src="https://media.planview.com/wp-content/uploads/2022/10/git-logo-png-transparent-1.png" alt="Logo di Git">
+<p>
+  In pratica git È molto utile ,Perché permette di tracciare le versioni di qualsiasi <b>software</b>.
+  <br>
+</p>
+<h1> Quiz su git</h1>
+<div class="question">
+  <p>Qual è il comando per inizializzare un nuovo repository Git?</p>
+  <label><input type="radio" name="q1" value="a"> git start</label><br>
+  <label><input type="radio" name="q1" value="b"> git init</label><br>
+  <label><input type="radio" name="q1" value="c"> git new</label><br>
+  <label><input type="radio" name="q1" value="d"> git create</label>
+</div>
+<hr>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250710172654460719/What-is-Git-repository.webp" width="300">
+Quindi git è uno strumento molto utile.
+</body>
+</html>
